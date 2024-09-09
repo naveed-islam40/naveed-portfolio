@@ -38,7 +38,7 @@ const HireMe = () => {
             {HireDetails &&
               HireDetails.map((detail, index) => {
                 return (
-                  <div className="shadow-md py-4 px-2 rounded-md  min-h-10 h-full w-[600px] flex justify-between items-center bg-[#fff] mb-2 max-lg:w-[400px] max-sm:w-full">
+                  <div className="shadow-md py-4 px-2 rounded-md  min-h-10 h-full w-[600px] flex justify-between items-center bg-[#fff] mb-2 max-lg:w-[400px] max-sm:w-full" key={index}>
                     <div>
                       <h1 className="text-[30px]">{detail.title}</h1>
                      <div className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${expand === index ? 'max-h-80' : "max-h-0"}`}>
