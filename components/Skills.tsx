@@ -1,170 +1,125 @@
-import React from "react";
-import Card from "./Card";
-import { IoLogoHtml5 } from "react-icons/io";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaSquareJs } from "react-icons/fa6";
-import { FaReact } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
-import { SiNextdotjs } from "react-icons/si";
-import { SiMongodb } from "react-icons/si";
-import { GrMysql } from "react-icons/gr";
-import { FaJava } from "react-icons/fa6";
-import { SiSpringboot } from "react-icons/si";
-import { SiTypescript } from "react-icons/si";
+// import React from "react";
+// import Card from "./Card";
+// import { skillsData } from "@/data/skillsData";
+// import { IconType } from "react-icons";
 
-const Skills = () => {
+// interface CardTypes {
+//   Icon: IconType,
+//   title: string,
+//   desc: string,
+//   bgColor: string
+//   padd: string,
+//   textColor?: string
+//   titleColor?: string
+//   iconSize?: string
+//   iconColor?: string
+// }
+
+// const Skills = () => {
+//   return (
+//     <section className="w-full m-10 max-sm:m-0">
+//       <div className="flex justify-center">
+//         <h1 className="text-[50px] text-[#6B41FE] font-pop font-[700] relative after:content-[''] after:absolute after:transition-all after:duration-300 after:ease-in-out after:w-0 after:bg-[#6B41FE] after:h-[3px] after:left-0 after:hover:w-full after:bottom-0 max-sm:text-[30px] max-sm:mt-5">
+//           Skills
+//         </h1>
+//       </div>
+//       <div className="flex justify-center items-center flex-wrap gap-10 mt-10 p-5">
+//         {skillsData.map((skill: CardTypes, index: number) => (
+//           <Card key={index} {...skill} />
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Skills;
+
+
+"use client"
+
+import { motion } from "framer-motion"
+
+const skills = [
+  { name: "HTML", level: 95 },     
+  { name: "Next.js", level: 85 },     
+  { name: "React", level: 90 },
+  { name: "TypeScript", level: 85 },
+  { name: "Node.js", level: 80 },
+  { name: "CSS", level: 75 },
+  { name: "Tailwind", level: 80 },
+  { name: "Bootstrap", level: 70 },
+  { name: "SQL", level: 75 },
+  { name: "PostgreSQL", level: 70 },
+  { name: "MongoDB", level: 75 },
+  { name: "Express.js", level: 80 },
+  { name: "Java", level: 85 },
+  { name: "Spring Boot", level: 80 },
+  { name: "JavaScript", level: 90 }
+];
+
+
+
+export default function Component() {
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+  
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  }
+
   return (
-    <section className="w-full m-10 max-sm:m-0">
-      <div className="flex justify-center">
-        <h1 className="text-[50px] text-[#6B41FE] font-pop font-[700] relative after:content-[''] after:absolute after:transition-all after:duration-300 after:ease-in-out after:w-0 after:bg-[#6B41FE] after:h-[3px] after:left-0 after:hover:w-full after:bottom-0 max-sm:text-[30px] max-sm:mt-5">
-          Skills
-        </h1>
-      </div>
-      <div className="flex justify-center items-center flex-wrap gap-10 mt-10">
-        <Card
-          Icon={IoLogoHtml5}
-          bgColor="bg-[#FAEBFF]"
-          desc="An HTML5 expert with a deep understanding of semantic elements, multimedia integration, and advanced APIs. Skilled in creating responsive, accessible, and high-performance web applications following best practices."
-          padd="mt-[0px]"
-          title="HTML5"
-          iconColor="text-[#DD4B25]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-        <Card
-          Icon={FaCss3Alt}
-          bgColor="bg-[#FAEBFF]"
-          desc="I'm a CSS expert with a mastery of layout techniques, responsive design, and modern frameworks. I excel in creating visually appealing, maintainable, and efficient styles, ensuring consistent user experiences across all devices."
-          padd="mt-[0px]"
-          title="CSS"
-          iconColor="text-[#254BDD]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-        <Card
-          Icon={FaSquareJs}
-          bgColor="bg-[#FAEBFF]"
-          desc="I'm a JavaScript developer with 1 year of experience, having worked on multiple real-world projects. I specialize in writing clean, efficient code, building dynamic web applications, and leveraging modern JavaScript frameworks."
-          padd="mt-[0px]"
-          title="JavaScript"
-          iconColor="text-[#EFD81D]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-        <Card
-          Icon={FaReact}
-          bgColor="bg-[#FAEBFF]"
-          desc="I'm a React.js developer with a strong background in building responsive web apps. My experience allows me to create scalable, user-friendly interfaces using React’s component-based architecture, making code more reusable and efficient."
-          padd="mt-[0px]"
-          title="React JS"
-          iconColor="text-[#5ED3F3]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={FaNodeJs}
-          bgColor="bg-[#FAEBFF]"
-          desc="I'm a Node.js developer with a strong background in building scalable server-side applications. I excel at using Node.js's non-blocking, event-driven architecture, ensuring efficient, high-performance backend systems."
-          padd="mt-[0px]"
-          title="Node JS"
-          iconColor="text-[#72A961]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={SiExpress}
-          bgColor="bg-[#FAEBFF]"
-          desc="I'm an Express.js developer skilled in building fast, scalable web applications. I use Express's flexible routing and middleware to create robust server-side logic, delivering efficient, reliable, and maintainable backend solutions."
-          padd="mt-[0px]"
-          title="Express JS"
-          iconColor="text-[#000]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={SiNextdotjs}
-          bgColor="bg-[#FAEBFF]"
-          desc="Next.js developer skilled in building high-performance web apps. I use server-side rendering, static generation, and API routes to create fast, scalable, and SEO-friendly applications with seamless user experiences."
-          padd="mt-[0px]"
-          title="Next JS"
-          iconColor="text-[#000]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={SiMongodb}
-          bgColor="bg-[#FAEBFF]"
-          desc="Experienced in MongoDB, I design and manage scalable databases for high-performance applications. Skilled in crafting efficient schemas, handling large data sets, and leveraging MongoDB's flexibility for dynamic, data-driven solutions."
-          padd="mt-[0px]"
-          title="Mongo DB"
-          iconColor="text-[#118D4D]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={GrMysql}
-          bgColor="bg-[#FAEBFF]"
-          desc="Experienced in MySQL, I design and manage robust relational databases. I specialize in creating efficient schemas, writing complex queries, and optimizing database performance to ensure reliable and scalable data management."
-          padd="mt-[0px]"
-          title="My SQL"
-          iconColor="text-[#3D718F]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={FaJava}
-          bgColor="bg-[#FAEBFF]"
-          desc="Proficient in Java, I develop robust, scalable applications with a focus on object-oriented design and efficient code. My expertise includes building enterprise solutions, integrating APIs, and leveraging Java’s extensive libraries and frameworks."
-          padd="mt-[0px]"
-          title="Java"
-          iconColor="text-[#F0931C]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={SiSpringboot}
-          bgColor="bg-[#FAEBFF]"
-          desc="Skilled in Spring Boot, I build and deploy scalable, production-ready applications. I leverage its convention-over-configuration approach to create robust, efficient backend services with seamless integration and microservices support."
-          padd="mt-[0px]"
-          title="Java SpringBoot"
-          iconColor="text-[#69AD3C]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-
-        <Card
-          Icon={SiTypescript}
-          bgColor="bg-[#FAEBFF]"
-          desc="Proficient in TypeScript, I enhance JavaScript projects with strong typing, improving code reliability and maintainability. I use TypeScript’s features to build scalable, error-free applications with clear, predictable behavior."
-          padd="mt-[0px]"
-          title="TypeScript"
-          iconColor="text-[#2F74C0]"
-          iconSize="text-[40px]"
-          textColor="text-[#727288]"
-          titleColor="text-[#000]"
-        />
-      </div>
-    </section>
-  );
-};
-
-export default Skills;
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={container}
+        className="max-w-7xl mx-auto"
+      >
+        <h2 className="text-3xl font-extrabold text-center mb-8">My Skills</h2>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((skill) => (
+            <motion.div
+              key={skill.name}
+              variants={item}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+            >
+              <div className="p-6">
+                <h3 className="text-lg font-medium text-gray-200 mb-2">{skill.name}</h3>
+                <div className="relative pt-1">
+                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-700">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
+                    />
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-semibold inline-block text-blue-500">
+                      {skill.level}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </div>
+  )
+}
