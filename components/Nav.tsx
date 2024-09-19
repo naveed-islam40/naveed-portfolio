@@ -12,7 +12,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (menuRef.current) {
-      setMenuHeight(isOpen ? menuRef.current.scrollHeight : 0);
+      setMenuHeight(isOpen ? 100 : 0);
     }
   }, [isOpen]);
 
@@ -85,7 +85,7 @@ export default function Navbar() {
       {/* Mobile menu, show/hide based on menu state */}
       <div
         ref={menuRef}
-        className="sm:hidden overflow-hidden transition-all duration-300 ease-in-out shadow-md flex flex-col justify-center items-center"
+        className="sm:hidden overflow-hidden transition-all duration-300 ease-in-out shadow-md flex flex-col justify-center items-center h-full"
         style={{ maxHeight: `${menuHeight}px` }}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
