@@ -1,56 +1,101 @@
-import Nav from '@/components/Nav';
-import About from '@/components/About';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { FaPhoneAlt } from "react-icons/fa";
-import Skills from '@/components/Skills';
-import HireMe from '@/components/HireMe';
-import Footer from '@/components/Footer';
+'use client'
 
-const Page = () => {
-  const buttonBaseStyle = 'relative px-8 py-2 rounded-md bg-white z-10 border-2 border-[#AD92F6] text-black';
-  const buttonHoverStyle = 'before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#C8B2F2] before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 overflow-hidden';
-  
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FaPhoneAlt, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import Nav from '@/components/Nav'
+import About from '@/components/About'
+import Skills from '@/components/Skills'
+import HireMe from '@/components/HireMe'
+import Footer from '@/components/Footer'
+
+export default function Page() {
+  const buttonBaseStyle = 'relative px-8 py-3 rounded-full bg-white text-black font-semibold transition-all duration-300 ease-in-out'
+  const buttonHoverStyle = 'hover:bg-purple-600 hover:text-white hover:shadow-lg'
+
   return (
-    <div className='overflow-hidden'>
+    <div className="overflow-x-hidden bg-gradient-to-br from-purple-50 to-indigo-100">
       <Nav />
-      <section className='h-full w-full bg-gradient-to-r from-[#FDF0E9] to-[#815EFD] mt-[90px] overflow-hidden'>
-       
-        <div className='flex justify-around items-center md:m-7 max-sm:m-7'>
-          <div className='flex flex-col gap-5 max-sm:w-[250px]'>
-            <h1 className='w-[400px] leading-[70px] font-nerko sm:text-[30px] md:text-[40px] lg:text-[50px] max-sm:leading-6'>
-              Hire Me To Develop Your <p className='text-[#815EFD]'>Website</p> 
-            </h1>
-            <div className='flex'>
-              <Link href="/contact" className={`${buttonBaseStyle} ${buttonHoverStyle}`}>
-                Get in Touch
-              </Link>
-            </div>
+      <main className="">
+        <section className="py-20 md:py-32 container sm:px-6 lg:px-8 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                Crafting Digital <span className="text-purple-600">Experiences</span>
+              </h1>
+              <p className="text-xl text-gray-600">
+                Hi, I'm Naveed Islam. I transform ideas into stunning web applications.
+              </p>
+              <div className="flex space-x-4">
+                <Link href="/contact" className={`${buttonBaseStyle} ${buttonHoverStyle}`}>
+                  Get in Touch
+                </Link>
+                <Link href="/projects" className={`${buttonBaseStyle} ${buttonHoverStyle} bg-purple-600 text-black`}>
+                  View Projects
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full filter blur-3xl opacity-70"></div>
+              <Image
+                src="/main.svg"
+                alt="Profile picture of Naveed"
+                width={500}
+                height={500}
+                className="relative rounded-full shadow-2xl"
+              />
+            </motion.div>
           </div>
-          <div className='border-b-2 border-[#cec3e0] rounded-md'>
-            <Image src="/naveed.png" alt='Profile picture of Naveed' width={200} height={200} className='w-[400px]'/>
-          </div>
-        </div>
-        <div className='flex justify-end'>
-          <div className='w-[400px] my-6 mr-[-10px] rounded-md p-8 text-white bg-[#6B41FE]'>
-            <h1 className='text-[40px] mb-3 max-sm:text-[20px]'>- Web Developer</h1>
-            <p className='my-4'>Hi there! I’m Naveed Islam, a passionate web developer who loves to take challenges and create stunning web application.</p>
-            <div className='flex items-center gap-5'>
-              < FaPhoneAlt  className=' text-[#6B41FE] p-2 h-[30px] w-[30px] rounded-[50%] cursor-pointer bg-[#fff] '/>
-              <p>03010771731</p>
-            </div>
-          </div> 
+        </section>
 
-        </div>
-      </section>
-      <About />
-      <Skills />
-      <HireMe />
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="py-20 bg-white rounded-3xl shadow-xl px-4 lg:mx-12 md:mx-8 mx-4"
+        >
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Web Developer Extraordinaire</h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Passionate about creating seamless user experiences and robust web applications. 
+              I thrive on challenges and continuously push the boundaries of web development.
+            </p>
+            <div className="flex justify-center items-center space-x-6">
+              <a href="tel:03010771731" className="flex items-center space-x-2 text-purple-600 hover:text-purple-800">
+                <FaPhoneAlt className="w-6 h-6" />
+                <span>03010771731</span>
+              </a>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-600 hover:text-purple-600 transition-colors">
+                  <FaGithub className="w-6 h-6" />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-purple-600 transition-colors">
+                  <FaLinkedin className="w-6 h-6" />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-purple-600 transition-colors">
+                  <FaTwitter className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        <About />
+        <Skills />
+        <HireMe />
+      </main>
       <Footer />
-
     </div>
-  );
+  )
 }
-
-export default Page;

@@ -19,6 +19,14 @@ const config = {
     },
     extend: {
       colors: {
+        purple: {
+          50: '#f5f3ff',
+          600: '#7c3aed',
+          700: '#7e22ce'
+        },
+        indigo: {
+          100: '#e0e7ff',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

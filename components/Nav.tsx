@@ -1,74 +1,66 @@
-"use client";
+'use client'
 
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [menuHeight, setMenuHeight] = useState(0);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const [shadow, setShadow] = useState("");
-
-  useEffect(() => {
-    if (menuRef.current) {
-      setMenuHeight(isOpen ? 100 : 0);
-    }
-  }, [isOpen]);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShadow("shadow-md");
-      } else {
-        setShadow("");
-      }
-    };
+      setIsScrolled(window.scrollY > 20)
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const linkDesign =
-    "relative px-8 py-2 rounded-md bg-white isolation-auto z-10 border-2 border-[#AD92F6] before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#C8B2F2] before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 text-black";
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ]
 
   return (
     <nav
-      className={`bg-gradient-to-r from-[#F8EBE9] to-[#815EFD] text-white fixed w-full z-50 ${shadow}`}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-[100px]">
-          <div className="flex-shrink-0 flex items-center ">
-            {/* Logo */}
-            <Link href="/" className="text-4xl font-bold text-gray-800">
+      <div className="max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="flex justify-between items-center h-20">
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
               Naveed
+            </span>
+          </Link>
+
+          <div className="hidden md:flex items-center space-x-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-300"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link
+              href="/hire-me"
+              className="px-4 py-2 rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors duration-300"
+            >
+              Hire Me
             </Link>
           </div>
 
-          {/* Desktop menu */}
-          <div className="hidden sm:flex sm:items-center">
-            <Link
-              href="/"
-              className={`px-3 py-2 rounded-md text-[17px] font-medium text-gray-700 hover:bg-white hover:text-black transition-colors duration-300 ${linkDesign}`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              className={`ml-4 px-3 py-2 rounded-md text-[17px] font-medium text-gray-700 hover:bg-white hover:text-black transition-colors duration-300 ${linkDesign}`}
-            >
-              Projects
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex items-center sm:hidden shadow-md rounded-md">
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-purple-600 focus:outline-none"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
@@ -82,27 +74,35 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
-      <div
-        ref={menuRef}
-        className="sm:hidden overflow-hidden transition-all duration-300 ease-in-out shadow-md flex flex-col justify-center items-center h-full"
-        style={{ maxHeight: `${menuHeight}px` }}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link
-            href="/"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-white hover:text-black transition-colors duration-300"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white"
           >
-            Home
-          </Link>
-          <Link
-            href="/projects"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-white hover:text-black transition-colors duration-300"
-          >
-            Projects
-          </Link>
-        </div>
-      </div>
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors duration-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/hire-me"
+                className="block px-3 py-2 rounded-md text-base font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-colors duration-300"
+              >
+                Hire Me
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
-  );
+  )
 }

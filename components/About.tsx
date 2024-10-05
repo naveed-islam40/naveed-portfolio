@@ -156,7 +156,7 @@ export default function Component() {
     <div className="container mx-auto p-4">
       <div className="m-10 py-10">
         <motion.h1
-          className="text-[50px] font-[700] font-pop max-sm:text-[30px]"
+          className="text-[50px] font-[700] font-pop max-sm:text-[30px] leading-tight"
           initial={{ opacity: 0, y: 100 }}
           transition={{ duration: 1.5 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -176,7 +176,7 @@ export default function Component() {
           online eCommerce store, an event page or even a product landing page.
         </motion.p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-5 px-4 lg:px-10 md:px-6">
         {cards.map((card, index) => (
           <motion.div
             key={card.title}
