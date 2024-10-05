@@ -30,7 +30,7 @@ export default function Page() {
                 Crafting Digital <span className="text-purple-600">Experiences</span>
               </h1>
               <p className="text-xl text-gray-600">
-                Hi, I'm Naveed Islam. I transform ideas into stunning web applications.
+                Hi, I&apos;m Naveed Islam. I transform ideas into stunning web applications.
               </p>
               <div className="flex space-x-4">
                 <Link href="/contact" className={`${buttonBaseStyle} ${buttonHoverStyle}`}>
