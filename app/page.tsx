@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaPhoneAlt, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import Nav from '@/components/Nav'
 import About from '@/components/About'
 import Skills from '@/components/Skills'
 import HireMe from '@/components/HireMe'
@@ -16,7 +15,6 @@ export default function Page() {
 
   return (
     <div className="overflow-x-hidden bg-gradient-to-br from-purple-50 to-indigo-100">
-      <Nav />
       <main className="">
         <section className="py-20 md:py-32 container sm:px-6 lg:px-8 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
