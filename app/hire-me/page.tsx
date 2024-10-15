@@ -20,11 +20,11 @@ export default function Component() {
      <Card className="w-full max-w-md mx-auto bg-white">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-bold text-[#8B5CF6]">Hire Me</CardTitle>
-        <CardDescription>Let's create amazing digital experiences together</CardDescription>
+        <CardDescription>Let&apos;s create amazing digital experiences together</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-center text-gray-600">
-          I'm Naveed Islam, a web developer passionate about transforming ideas into stunning web applications.
+          I&apos;m Naveed Islam, a web developer passionate about transforming ideas into stunning web applications.
         </p>
         <div className="flex justify-center space-x-4">
           <Button className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white" onClick={handleDownload}>

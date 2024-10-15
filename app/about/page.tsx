@@ -55,7 +55,7 @@ export default function AboutUs() {
             I believe in creating web applications that are not only visually appealing but also intuitive and user-friendly. My goal is to bridge the gap between aesthetics and functionality, ensuring that every project I undertake delivers exceptional value to its users.
           </p>
           <Button variant="outline" className="border-[#8B5CF6] text-[#8B5CF6] hover:bg-[#8B5CF6] hover:text-white">
-            Let's Work Together
+            Let&apos;s Work Together
           </Button>
         </div>
       </div>
