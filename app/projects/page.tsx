@@ -1,20 +1,21 @@
-"use client"
-import ProjectCard from "@/components/ProjectCard/ProjectCart"
+"use client";
+import ProjectCard from "@/components/ProjectCard/ProjectCart";
 
 interface Project {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  websiteUrl: string
-  sourceCodeUrl: string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  websiteUrl: string;
+  sourceCodeUrl: string;
 }
 
 const projects: Project[] = [
   {
     id: "1",
     title: "Ecommerce Website",
-    description: "A personal ecommerce website showcasing my skills and projects.",
+    description:
+      "A personal ecommerce website showcasing my skills and projects.",
     imageUrl: "/Ecommerce.png",
     websiteUrl: "https://ecommerce-frontend-teal-five.vercel.app/",
     sourceCodeUrl: "https://github.com/naveed-islam40/Ecommerce-frontend",
@@ -22,7 +23,8 @@ const projects: Project[] = [
   {
     id: "2",
     title: "Company Survey Management",
-    description: "A full-stack Company Survey Management application with user authentication.",
+    description:
+      "A full-stack Company Survey Management application with user authentication.",
     imageUrl: "/heugo.png",
     websiteUrl: "https://frontend-deploy-six.vercel.app/signup",
     sourceCodeUrl: "https://github.com/naveed-islam40/frontend-deploy",
@@ -35,7 +37,16 @@ const projects: Project[] = [
     websiteUrl: "https://my-meet-seven.vercel.app/",
     sourceCodeUrl: "https://github.com/naveed-islam40/my-meet",
   },
-]
+  {
+    id: "4",
+    title: "Project Management",
+    description:
+      "A project management where, you can manage your projects & thier tasks digitally",
+    imageUrl: "/task_project.png",
+    websiteUrl: "https://project-management-amber-rho.vercel.app/",
+    sourceCodeUrl: "#",
+  },
+];
 
 export default function page() {
   return (
@@ -47,5 +58,5 @@ export default function page() {
         ))}
       </div>
     </div>
-  )
+  );
 }
